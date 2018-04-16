@@ -12,11 +12,12 @@ class MainViewController: UIViewController {
     //MARK: Properties
     let cardSelectView = CardSelectView.initFromNib()
     var cardSelectViewBottomConstraint:NSLayoutConstraint?
-    var isMaximize:Bool = false {
-        didSet{
-            isMaximize ? self.maximizeCardSelectView() : self.minimizeCardSelectView()
-        }
-    }
+    var isMaximize:Bool = false
+//    {
+//        didSet{
+//            isMaximize ? self.maximizeCardSelectView() : self.minimizeCardSelectView()
+//        }
+//s    }
     //MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +37,12 @@ class MainViewController: UIViewController {
         cardSelectView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         cardSelectView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         cardSelectView.heightAnchor.constraint(equalToConstant: 400).isActive = true
+        
+        cardSelectView.dismissButton.addTarget(self, action: #selector(minimizeCardSelectView), for: .touchUpInside)
     }
     //MARK: Handle Card Select View Sizing
     func maximizeCardSelectView() {
+        isMaximize = true
         cardSelectViewBottomConstraint?.constant = 0
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.cardSelectView.selectView.alpha = 1
@@ -46,7 +50,8 @@ class MainViewController: UIViewController {
             self.view.layoutIfNeeded()
         }, completion: nil)
     }
-    func minimizeCardSelectView() {
+    @objc func minimizeCardSelectView() {
+        isMaximize = false
         cardSelectViewBottomConstraint?.constant = 340
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.cardSelectView.selectView.alpha = 0

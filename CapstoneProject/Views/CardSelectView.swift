@@ -15,6 +15,12 @@ class CardSelectView: UIView {
             selectView.backgroundColor = .lightGray
         }
     }
+    var dismissButton: UIButton = {
+        let button = UIButton()
+        button.setImage(#imageLiteral(resourceName: "dismiss_arrow_icon"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     @IBOutlet weak var cardMenuBtnView: UIView!
     //MARK: Life cycle
     override func awakeFromNib() {
@@ -23,18 +29,25 @@ class CardSelectView: UIView {
         self.isUserInteractionEnabled = true
         cardMenuBtnView.isUserInteractionEnabled = true
         cardMenuBtnView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleMaximizeCardSelectView)))
+        setupViews()
     }
-    
     static func initFromNib()->CardSelectView {
         let cardSelectView = Bundle.main.loadNibNamed("CardSelectView", owner: self, options: nil)?.first as! CardSelectView
         return cardSelectView
+    }
+    //MARK: Setup View
+    fileprivate func setupViews(){
+        selectView.addSubview(dismissButton)
+        dismissButton.centerXAnchor.constraint(equalTo: selectView.centerXAnchor).isActive = true
+        dismissButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        dismissButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        dismissButton.bottomAnchor.constraint(equalTo: selectView.bottomAnchor, constant: -8).isActive = true
     }
     //MARK: Target-Action
     @objc func handleMaximizeCardSelectView(){
         let navigationVC = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
         let mainVC = navigationVC.topViewController as! MainViewController
-        
-        mainVC.isMaximize = mainVC.isMaximize ? false : true
+        mainVC.maximizeCardSelectView()
     }
     @objc func handlePanGestureDismiss(_ gesture: UIPanGestureRecognizer) {
         let translation = gesture.translation(in: self.superview)
