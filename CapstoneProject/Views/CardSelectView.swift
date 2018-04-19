@@ -17,14 +17,20 @@ class CardSelectView: UIView {
     }
     var dismissButton: UIButton = {
         let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "dismiss_arrow_icon"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "under_arrow"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    @IBOutlet weak var cardMenuBtnView: UIView!
+    @IBOutlet weak var showUpButton: UIButton!
+    @IBOutlet weak var cardMenuBtnView: UIView! {
+        didSet{
+            cardMenuBtnView.backgroundColor = UIColor.themeWhite
+        }
+    }
     //MARK: Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.backgroundColor = UIColor.themeWhite
         self.selectView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePanGestureDismiss)))
         self.isUserInteractionEnabled = true
         cardMenuBtnView.isUserInteractionEnabled = true
@@ -42,6 +48,7 @@ class CardSelectView: UIView {
         dismissButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
         dismissButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         dismissButton.bottomAnchor.constraint(equalTo: selectView.bottomAnchor, constant: -8).isActive = true
+        showUpButton.addTarget(self, action: #selector(handleMaximizeCardSelectView), for: .touchUpInside)
     }
     //MARK: Target-Action
     @objc func handleMaximizeCardSelectView(){

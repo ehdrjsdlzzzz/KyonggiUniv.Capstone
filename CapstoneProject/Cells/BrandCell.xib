@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SDSwagger.otf">
+            <string>Swagger</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="BrandCell" customModule="CapstoneProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="180" height="250"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="180" height="250"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bandilunis" translatesAutoresizingMaskIntoConstraints="NO" id="kon-9p-qlG">
+                        <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="kon-9p-qlG" secondAttribute="height" multiplier="1:1" id="fov-0S-BAa"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nike" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qQ-Ut-sNp">
+                        <rect key="frame" x="0.0" y="196" width="180" height="24"/>
+                        <fontDescription key="fontDescription" name="Swagger" family="Swagger" pointSize="24"/>
+                        <color key="textColor" red="0.27058823529999998" green="0.2666666667" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="kon-9p-qlG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="GQS-Nr-PfY"/>
+                <constraint firstItem="8qQ-Ut-sNp" firstAttribute="top" secondItem="kon-9p-qlG" secondAttribute="bottom" constant="16" id="JZz-qV-PFH"/>
+                <constraint firstAttribute="trailing" secondItem="kon-9p-qlG" secondAttribute="trailing" id="d6D-s5-1De"/>
+                <constraint firstItem="8qQ-Ut-sNp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ftP-8e-cZZ"/>
+                <constraint firstItem="kon-9p-qlG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="hzI-Zh-SFa"/>
+                <constraint firstAttribute="trailing" secondItem="8qQ-Ut-sNp" secondAttribute="trailing" id="tQ6-Tj-6VH"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="171" height="283"/>
+            <connections>
+                <outlet property="brandLogoImage" destination="kon-9p-qlG" id="P0t-lp-srv"/>
+                <outlet property="brandNameLabel" destination="8qQ-Ut-sNp" id="pdK-gg-uDc"/>
+            </connections>
+            <point key="canvasLocation" x="-31.5" y="-7"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="bandilunis" width="322" height="322"/>
+    </resources>
+</document>
