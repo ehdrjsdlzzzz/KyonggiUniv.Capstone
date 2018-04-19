@@ -19,6 +19,7 @@
 		3E3D5FB420887EAC000A9175 /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D5FB320887EAC000A9175 /* Brand.swift */; };
 		3E3D5FB620887EB3000A9175 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D5FB520887EB3000A9175 /* Card.swift */; };
 		3E3D5FB82088A68E000A9175 /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D5FB72088A68E000A9175 /* Beacon.swift */; };
+		3E3D5FBA2088AB9B000A9175 /* MainViewController + Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D5FB92088AB9B000A9175 /* MainViewController + Beacon.swift */; };
 		3E9EEE5F207F9386007F61B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9EEE5E207F9386007F61B5 /* AppDelegate.swift */; };
 		3E9EEE66207F9387007F61B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E9EEE65207F9387007F61B5 /* Assets.xcassets */; };
 		3E9EEE69207F9387007F61B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E9EEE67207F9387007F61B5 /* LaunchScreen.storyboard */; };
@@ -41,6 +42,7 @@
 		3E3D5FB320887EAC000A9175 /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
 		3E3D5FB520887EB3000A9175 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		3E3D5FB72088A68E000A9175 /* Beacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
+		3E3D5FB92088AB9B000A9175 /* MainViewController + Beacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController + Beacon.swift"; sourceTree = "<group>"; };
 		3E9EEE5B207F9386007F61B5 /* CapstoneProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapstoneProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E9EEE5E207F9386007F61B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E9EEE65207F9387007F61B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -111,11 +113,19 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		3E3D5FBB2088C3F8000A9175 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3E9EEE52207F9386007F61B5 = {
 			isa = PBXGroup;
 			children = (
 				3E9EEE5D207F9386007F61B5 /* CapstoneProject */,
 				3E9EEE5C207F9386007F61B5 /* Products */,
+				3E3D5FBB2088C3F8000A9175 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -149,6 +159,7 @@
 			children = (
 				3E9EEE71207F93B1007F61B5 /* MainViewController.swift */,
 				3E9EEE72207F93B1007F61B5 /* MainViewController.xib */,
+				3E3D5FB92088AB9B000A9175 /* MainViewController + Beacon.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -194,6 +205,23 @@
 				TargetAttributes = {
 					3E9EEE5A207F9386007F61B5 = {
 						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.HotspotConfiguration = {
+								enabled = 0;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+							com.apple.NearFieldCommunicationTagReading = {
+								enabled = 0;
+							};
+							com.apple.WAC = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -247,6 +275,7 @@
 				3E3D5FA120886352000A9175 /* UIColor + themeColor.swift in Sources */,
 				3E3D5FB620887EB3000A9175 /* Card.swift in Sources */,
 				3E3D5FAA20886A6D000A9175 /* BrandCell.swift in Sources */,
+				3E3D5FBA2088AB9B000A9175 /* MainViewController + Beacon.swift in Sources */,
 				3E3D5FB82088A68E000A9175 /* Beacon.swift in Sources */,
 				3E3D5FA620886A61000A9175 /* CategoryCell.swift in Sources */,
 			);

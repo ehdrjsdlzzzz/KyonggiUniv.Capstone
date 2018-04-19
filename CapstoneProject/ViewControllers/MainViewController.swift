@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class MainViewController: UIViewController {
     //MARK: Outlets
@@ -45,10 +46,13 @@ class MainViewController: UIViewController {
     let cardSelectView = CardSelectView.initFromNib()
     var cardSelectViewBottomConstraint:NSLayoutConstraint?
     var isMaximize:Bool = false
+    var locationManager:CLLocationManager = CLLocationManager()
+    var beaconRegion:CLBeaconRegion!
     //MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        initializeLocationManager()
     }
     //MARK: Setup Views
     fileprivate func setupViews(){
@@ -65,7 +69,7 @@ class MainViewController: UIViewController {
     
         favoritesCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         favoritesCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        favoritesCollectionView.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: 60).isActive = true
+        favoritesCollectionView.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: 30).isActive = true
         favoritesCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100).isActive = true
 //        setupCardSelectView()
     }
@@ -139,7 +143,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.row == 0 {
-            return CGSize(width: self.view.frame.width, height: 250)
+            return CGSize(width: self.view.frame.width, height: 280)
         }
         return CGSize(width: self.view.frame.width, height: 200)
     }
