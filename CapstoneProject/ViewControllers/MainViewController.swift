@@ -23,7 +23,6 @@ class MainViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont(name: "Swagger", size: 16)
         label.textColor = UIColor.themeDark
-        label.text = "4.19"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -31,7 +30,7 @@ class MainViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont(name: "Swagger", size: 28)
         label.textColor = UIColor.themeDark
-        label.text = "It is good day to shopping"
+        label.text = "It is good day to buy"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -64,6 +63,10 @@ class MainViewController: UIViewController {
         self.view.addSubview(favoritesCollectionView)
         dateLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16).isActive = true
         dateLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        let formatter = DateFormatter()
+        formatter.locale = Locale.current
+        formatter.dateFormat = "MMMM dd"
+        dateLabel.text = formatter.string(from: Date())
         greetingLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16).isActive = true
         greetingLabel.topAnchor.constraint(equalTo: self.dateLabel.bottomAnchor, constant: 4).isActive = true
     

@@ -24,6 +24,7 @@ class CategoryCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCollectioView()
+        setupGesture()
     }
     override func prepareForReuse() {
         super.prepareForReuse()
