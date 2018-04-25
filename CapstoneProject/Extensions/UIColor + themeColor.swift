@@ -10,15 +10,18 @@ import UIKit
 
 extension UIColor {
     static var themeDark: UIColor {
-        return UIColor(red: 69/255.0, green: 68/255.0, blue: 69/255.0, alpha: 1)
+        return UIColor(hex: 0x454445)
     }
     static var themeLightGreen: UIColor {
-        return UIColor(red: 0/255.0, green: 148/255.0, blue: 148/255.0, alpha: 1)
+        return UIColor(hex: 0x009494)
     }
     static var themeGreen: UIColor {
-        return UIColor(red: 0/255.0, green: 88/255.0, blue: 94/255.0, alpha: 1)
+        return UIColor(hex: 0x00585E)
     }
     static var themeWhite: UIColor {
-        return UIColor(red: 245/255.0, green: 242/255.0, blue: 220/255.0, alpha: 1)
+        return UIColor(hex: 0xF5F2DC)
+    }
+    convenience init(hex: Int){
+        self.init(red: CGFloat((hex & 0xFF0000) >> 16) / 255.0, green: CGFloat((hex & 0x00FF00) >> 8) / 255.0, blue: CGFloat(hex & 0x0000FF) / 255.0, alpha: 1)
     }
 }
