@@ -23,27 +23,25 @@ extension MainViewController: CLLocationManagerDelegate{
     
     func rangeBeacons(){
         if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self) {
-            self.beaconRegion = CLBeaconRegion(proximityUUID: UUID(uuidString: beacons[0].uuid)!, identifier: beacons[0].identifier)
             self.beaconRegion.notifyEntryStateOnDisplay = true
             self.beaconRegion.notifyOnExit = true
             self.beaconRegion.notifyOnEntry = true
             locationManager.startMonitoring(for: self.beaconRegion) // --------------- 2
+
         }else{
             print("CLLocation Monitoring is unavailable")
         }
     }
     
-    func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
-        print("Start Monitoring")                                   // --------------- 3
-    }
-    
     func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
         if state == .inside {
-            print("State is inside")                                // --------------- 5
+            print("Now inside of Region")                                // --------------- 5
             locationManager.startRangingBeacons(in: self.beaconRegion)
         }else if state == .outside {
-            print("State is outside")                               // --------------- 8
+            print("Now outside of Region")                               // --------------- 8
             locationManager.stopRangingBeacons(in: self.beaconRegion)
+        }else if state == .unknown {
+            print("Now unknown of Region")
         }
     }
     
@@ -56,22 +54,27 @@ extension MainViewController: CLLocationManagerDelegate{
     }
     
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
-                                                                    // --------------- 6
+                                                                            // --------------- 6
         if beacons.count > 0 {
             let nearestBeacon = beacons.first!
             switch nearestBeacon.proximity {
-            case .far:
-                print("far")
-                break
-            case .near:
-                print("near")
-                break
             case .immediate:
-                print("It's on your face")
+                displayStoreInformation(minor: nearestBeacon.minor)
                 break
-            case .unknown:
-                print("unknown")
+                
+            default :
+                break
             }
+        }
+    }
+    
+    func displayStoreInformation(minor: NSNumber) {
+        if minor == 10889 {
+            print("Nike")
+        }else if minor == 10884 {
+            print("Adidas")
+        }else if minor == 10882{
+            print("New balance")
         }
     }
 }

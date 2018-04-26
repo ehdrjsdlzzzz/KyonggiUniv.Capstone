@@ -9,5 +9,6 @@
 import Foundation
 
 struct Card {
+    var id:Int
     var company:String
 }

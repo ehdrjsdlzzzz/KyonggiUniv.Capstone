@@ -11,4 +11,6 @@ import UIKit
 struct Brand {
     var image: UIImage
     var name:String
+    // var imageUrl: String?
+    
 }

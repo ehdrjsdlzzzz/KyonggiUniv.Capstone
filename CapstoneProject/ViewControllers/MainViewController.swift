@@ -51,6 +51,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        self.beaconRegion = CLBeaconRegion(proximityUUID: UUID(uuidString: beacons[0].uuid)!, identifier: beacons[0].identifier)
         initializeLocationManager()
     }
     //MARK: Setup Views
