@@ -24,13 +24,13 @@ class CardSelectView: UIView {
     @IBOutlet weak var showUpButton: UIButton!
     @IBOutlet weak var cardMenuBtnView: UIView! {
         didSet{
-            cardMenuBtnView.backgroundColor = UIColor.themeWhite
+            cardMenuBtnView.backgroundColor = UIColor.themeDark
         }
     }
     //MARK: Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = UIColor.themeWhite
+        self.backgroundColor = UIColor.clear
         self.selectView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePanGestureDismiss)))
         self.isUserInteractionEnabled = true
         cardMenuBtnView.isUserInteractionEnabled = true

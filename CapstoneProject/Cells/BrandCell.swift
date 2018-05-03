@@ -10,7 +10,11 @@ import UIKit
 
 class BrandCell: UICollectionViewCell {
     
-    @IBOutlet weak var brandNameLabel: UILabel!
+    @IBOutlet weak var brandNameLabel: UILabel! {
+        didSet{
+            brandNameLabel.textColor = UIColor.themeLightSkin
+        }
+    }
     @IBOutlet weak var brandLogoImage: UIImageView!
     var brand: Brand? {
         didSet{

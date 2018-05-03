@@ -61,7 +61,6 @@ extension MainViewController: CLLocationManagerDelegate{
             case .immediate:
                 displayStoreInformation(minor: nearestBeacon.minor)
                 break
-                
             default :
                 break
             }

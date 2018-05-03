@@ -16,20 +16,20 @@ class MainViewController: UIViewController {
         collectionViewLayout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 100, height: 100), collectionViewLayout: collectionViewLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = UIColor.themeWhite
+        collectionView.backgroundColor = UIColor.themeDarkBlue
         return collectionView
     }()
     var dateLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Swagger", size: 16)
-        label.textColor = UIColor.themeDark
+        label.textColor = UIColor.themeLightSkin
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     var greetingLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Swagger", size: 28)
-        label.textColor = UIColor.themeDark
+        label.textColor = UIColor.themeLightSkin
         label.text = "It is good day to buy"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -42,6 +42,14 @@ class MainViewController: UIViewController {
         Brand(image: #imageLiteral(resourceName: "nike"), name: "Nike"),
         Brand(image: #imageLiteral(resourceName: "newbalance"), name: "New Balance")
         ]
+    var cards:[Card] = [
+        Card(category: "debit", name: "S20", company: "신한카드"),
+        Card(category: "debit", name: "네이버페이 체크카드", company: "신한카드"),
+        Card(category: "credit", name: "현대카드Zero", company: "현대카드"),
+        Card(category: "credit", name: "삼성카드4", company: "삼성카드"),
+        Card(category: "credit", name: "신한 Deep Dream", company: "신한카드"),
+        Card(category: "credit", name: "청춘대로 톡톡카드", company: "KB국민")
+    ]
     let cardSelectView = CardSelectView.initFromNib()
     var cardSelectViewBottomConstraint:NSLayoutConstraint?
     var isMaximize:Bool = false
@@ -58,7 +66,7 @@ class MainViewController: UIViewController {
     fileprivate func setupViews(){
         setupNavigationBar()
         setupFavoritesCollectionView()
-        self.view.backgroundColor = UIColor.themeWhite
+        self.view.backgroundColor = UIColor.themeDarkBlue
         self.view.addSubview(greetingLabel)
         self.view.addSubview(dateLabel)
         self.view.addSubview(favoritesCollectionView)
@@ -75,7 +83,7 @@ class MainViewController: UIViewController {
         favoritesCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         favoritesCollectionView.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: 30).isActive = true
         favoritesCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100).isActive = true
-//        setupCardSelectView()
+        setupCardSelectView()
     }
     fileprivate func setupFavoritesCollectionView(){
         favoritesCollectionView.delegate = self
@@ -87,8 +95,8 @@ class MainViewController: UIViewController {
     fileprivate func setupNavigationBar(){
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.barTintColor = UIColor.themeWhite
-        self.navigationController?.navigationBar.tintColor = UIColor.themeDark
+        self.navigationController?.navigationBar.barTintColor = UIColor.themeDarkBlue
+        self.navigationController?.navigationBar.tintColor = UIColor.themeOpaqueGray
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "setting"), style: .plain, target: self, action: #selector(handleSetting))
     }
     fileprivate func setupCardSelectView(){
@@ -128,13 +136,14 @@ class MainViewController: UIViewController {
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.reusableIdentifier, for: indexPath) as! CategoryCell
-        cell.backgroundColor = UIColor.themeLightGreen
-        cell.categoryLabel.textColor = UIColor.themeWhite
+        cell.backgroundColor = UIColor.themeDarkBlue
+        cell.categoryLabel.textColor = UIColor.themeLightSkin
         if indexPath.row == 0 {
             cell.categoryLabel.text = "Brand"
             cell.brands = self.brands
         }else if indexPath.row == 1  {
             cell.categoryLabel.text = "Cards"
+            cell.cards = self.cards
         }
         return cell
     }

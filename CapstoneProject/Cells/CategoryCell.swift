@@ -12,7 +12,7 @@ class CategoryCell: UICollectionViewCell {
     //MARK: Outlets
     @IBOutlet weak var itemsCollectionView: UICollectionView! {
         didSet{
-            itemsCollectionView.backgroundColor = UIColor.themeWhite
+            itemsCollectionView.backgroundColor = UIColor.themeDarkBlue
         }
     }
     @IBOutlet weak var categoryLabel: UILabel!
@@ -58,7 +58,9 @@ extension CategoryCell: UICollectionViewDelegate, UICollectionViewDataSource {
             return cell
         }else if let cards = self.cards {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCell.reusableIdentifier, for: indexPath) as! CardCell
-            
+            cell.card = cards[indexPath.row]
+            cell.layer.cornerRadius = 15
+            cell.layer.masksToBounds = true
             return cell
         }
         return UICollectionViewCell()
@@ -70,9 +72,16 @@ extension CategoryCell: UICollectionViewDelegateFlowLayout {
         if let _ = self.brands {
             return CGSize(width: 180, height: 250)
         }else if let _ = self.cards {
-            return CGSize(width: 250, height: 80)
+            return CGSize(width: 258, height: 162)
         }
         
         return CGSize(width: 0, height: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        if let cards = self.cards {
+            return UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+        }
+        return UIEdgeInsetsMake(0, 0, 0, 0)
     }
 }
