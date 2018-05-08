@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import UserNotifications
 
 class MainViewController: UIViewController {
     //MARK: Outlets
@@ -61,6 +62,7 @@ class MainViewController: UIViewController {
         setupViews()
         self.beaconRegion = CLBeaconRegion(proximityUUID: UUID(uuidString: beacons[0].uuid)!, identifier: beacons[0].identifier)
         initializeLocationManager()
+        UNUserNotificationCenter.current().delegate = self
     }
     //MARK: Setup Views
     fileprivate func setupViews(){
@@ -162,3 +164,21 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+extension MainViewController: UNUserNotificationCenterDelegate {
+    func localNotification(text: String){
+        let content = UNMutableNotificationContent()
+        content.title = NSString.localizedUserNotificationString(forKey: "IBM", arguments: nil)
+        content.body = NSString.localizedUserNotificationString(forKey: text, arguments: nil)
+        content.sound = UNNotificationSound.default()
+        let request = UNNotificationRequest(identifier: "IBM", content: content, trigger: nil)
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+            
+        }
+        center.add(request, withCompletionHandler: nil)
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound])
+    }
+}

@@ -18,9 +18,6 @@ extension UIColor {
     static var themeGreen: UIColor {
         return UIColor(hex: 0x00585E)
     }
-//    static var themeWhite: UIColor {
-//        return UIColor(hex: 0xF5F2DC)
-//    }
     // Second Theme
     static var themeDarkBlue: UIColor {
         return UIColor(hex: 0x012E40)

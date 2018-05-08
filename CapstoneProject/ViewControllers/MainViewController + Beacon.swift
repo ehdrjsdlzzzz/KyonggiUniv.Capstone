@@ -13,6 +13,7 @@ extension MainViewController: CLLocationManagerDelegate{
     func initializeLocationManager(){
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
+        locationManager.allowsBackgroundLocationUpdates = true
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -46,10 +47,12 @@ extension MainViewController: CLLocationManagerDelegate{
     }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        localNotification(text: "You are now in COEX")
         print("didEnter at \(region.identifier)")                   // --------------- 4
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        localNotification(text: "Bye Bye")
         print("didExit at \(region.identifier)")                    // --------------- 7
     }
     
