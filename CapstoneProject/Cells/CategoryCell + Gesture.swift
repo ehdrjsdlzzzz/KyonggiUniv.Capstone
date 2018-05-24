@@ -17,23 +17,23 @@ extension CategoryCell {
         guard let keyWindow = UIApplication.shared.keyWindow else {return}
         let location = gesture.location(in: self.itemsCollectionView)
         guard let indexPath = itemsCollectionView.indexPathForItem(at: location) else {return}
-        print(indexPath.row, indexPath.section)
         
         let alert:UIAlertController!
-        if let cards = self.cards {
-            let item = cards[indexPath.row]
+        switch category {
+        case .Card:
+            let item = UserData.default.cards[indexPath.row]
             alert = UIAlertController(title: nil, message: "Remove \(item.name)?", preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { (_) in
-                self.cards?.remove(at: indexPath.row)
+                UserData.default.cards.remove(at: indexPath.row)
                 self.itemsCollectionView.deleteItems(at: [indexPath])
             }))
             alert.addAction(UIAlertAction(title: "Cencel", style: .cancel, handler: nil))
             keyWindow.rootViewController?.present(alert, animated: true, completion: nil)
-        }else if let brands = self.brands{
-            let item = brands[indexPath.row]
+        case .Brand:
+            let item = UserData.default.brands[indexPath.row]
             alert = UIAlertController(title: nil, message: "Remove \(item.name)?", preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { (_) in
-                self.brands?.remove(at: indexPath.row)
+                UserData.default.brands.remove(at: indexPath.row)
                 self.itemsCollectionView.deleteItems(at: [indexPath])
             }))
             alert.addAction(UIAlertAction(title: "Cencel", style: .cancel, handler: nil))

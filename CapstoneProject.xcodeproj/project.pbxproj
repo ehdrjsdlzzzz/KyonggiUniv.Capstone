@@ -21,13 +21,15 @@
 		3E3D5FB620887EB3000A9175 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D5FB520887EB3000A9175 /* Card.swift */; };
 		3E3D5FB82088A68E000A9175 /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D5FB72088A68E000A9175 /* Beacon.swift */; };
 		3E3D5FBA2088AB9B000A9175 /* MainViewController + Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D5FB92088AB9B000A9175 /* MainViewController + Beacon.swift */; };
+		3E8B59F020B681BC009435AD /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8B59EF20B681BC009435AD /* UserData.swift */; };
+		3E8B59F720B68826009435AD /* ItemCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8B59F520B68826009435AD /* ItemCategoryViewController.swift */; };
+		3E8B59F820B68826009435AD /* ItemCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E8B59F620B68826009435AD /* ItemCategoryViewController.xib */; };
+		3E8B59FA20B688D5009435AD /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8B59F920B688D5009435AD /* Enums.swift */; };
 		3E9EEE5F207F9386007F61B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9EEE5E207F9386007F61B5 /* AppDelegate.swift */; };
 		3E9EEE66207F9387007F61B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E9EEE65207F9387007F61B5 /* Assets.xcassets */; };
 		3E9EEE69207F9387007F61B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E9EEE67207F9387007F61B5 /* LaunchScreen.storyboard */; };
 		3E9EEE73207F93B1007F61B5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9EEE71207F93B1007F61B5 /* MainViewController.swift */; };
 		3E9EEE74207F93B1007F61B5 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E9EEE72207F93B1007F61B5 /* MainViewController.xib */; };
-		3E9EEE77207F9491007F61B5 /* CardSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9EEE76207F9491007F61B5 /* CardSelectView.swift */; };
-		3E9EEE79207F94D7007F61B5 /* CardSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E9EEE78207F94D7007F61B5 /* CardSelectView.xib */; };
 		3EC06E272090964600761EBF /* CategoryCell + Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC06E262090964600761EBF /* CategoryCell + Gesture.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +48,10 @@
 		3E3D5FB520887EB3000A9175 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		3E3D5FB72088A68E000A9175 /* Beacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
 		3E3D5FB92088AB9B000A9175 /* MainViewController + Beacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController + Beacon.swift"; sourceTree = "<group>"; };
+		3E8B59EF20B681BC009435AD /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		3E8B59F520B68826009435AD /* ItemCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCategoryViewController.swift; sourceTree = "<group>"; };
+		3E8B59F620B68826009435AD /* ItemCategoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCategoryViewController.xib; sourceTree = "<group>"; };
+		3E8B59F920B688D5009435AD /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		3E9EEE5B207F9386007F61B5 /* CapstoneProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapstoneProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E9EEE5E207F9386007F61B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E9EEE65207F9387007F61B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,8 +59,6 @@
 		3E9EEE6A207F9387007F61B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E9EEE71207F93B1007F61B5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3E9EEE72207F93B1007F61B5 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
-		3E9EEE76207F9491007F61B5 /* CardSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSelectView.swift; sourceTree = "<group>"; };
-		3E9EEE78207F94D7007F61B5 /* CardSelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardSelectView.xib; sourceTree = "<group>"; };
 		3EC06E262090964600761EBF /* CategoryCell + Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryCell + Gesture.swift"; sourceTree = "<group>"; };
 		5DF9E7E621CCC6EF2983A53E /* Pods-CapstoneProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneProject/Pods-CapstoneProject.debug.xcconfig"; sourceTree = "<group>"; };
 		F76345B6769AEE4968CBFD77 /* Pods-CapstoneProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-CapstoneProject/Pods-CapstoneProject.release.xcconfig"; sourceTree = "<group>"; };
@@ -86,6 +90,7 @@
 			children = (
 				3E3D5FB120887004000A9175 /* Beacons */,
 				3E3D5F9A208855A2000A9175 /* SDSwagger.otf */,
+				3E8B59F920B688D5009435AD /* Enums.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -117,6 +122,7 @@
 			children = (
 				3E3D5FB320887EAC000A9175 /* Brand.swift */,
 				3E3D5FB520887EB3000A9175 /* Card.swift */,
+				3E8B59EF20B681BC009435AD /* UserData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -154,7 +160,6 @@
 				3E3D5FA220886A1D000A9175 /* Cells */,
 				3E3D5F9D208855E1000A9175 /* Resources */,
 				3E3D5F9C208855DC000A9175 /* Extensions */,
-				3E9EEE75207F947A007F61B5 /* Views */,
 				3E9EEE70207F93A5007F61B5 /* ViewControllers */,
 				3E9EEE5E207F9386007F61B5 /* AppDelegate.swift */,
 				3E9EEE65207F9387007F61B5 /* Assets.xcassets */,
@@ -168,19 +173,12 @@
 			isa = PBXGroup;
 			children = (
 				3E9EEE71207F93B1007F61B5 /* MainViewController.swift */,
-				3E9EEE72207F93B1007F61B5 /* MainViewController.xib */,
 				3E3D5FB92088AB9B000A9175 /* MainViewController + Beacon.swift */,
+				3E9EEE72207F93B1007F61B5 /* MainViewController.xib */,
+				3E8B59F520B68826009435AD /* ItemCategoryViewController.swift */,
+				3E8B59F620B68826009435AD /* ItemCategoryViewController.xib */,
 			);
 			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		3E9EEE75207F947A007F61B5 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				3E9EEE76207F9491007F61B5 /* CardSelectView.swift */,
-				3E9EEE78207F94D7007F61B5 /* CardSelectView.xib */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		CDE4FFFFC754AD5DA9227C1E /* Pods */ = {
@@ -269,10 +267,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E9EEE79207F94D7007F61B5 /* CardSelectView.xib in Resources */,
 				3E3D5FA720886A61000A9175 /* CategoryCell.xib in Resources */,
 				3E3D5F9B208855A2000A9175 /* SDSwagger.otf in Resources */,
 				3E3D5FAB20886A6D000A9175 /* BrandCell.xib in Resources */,
+				3E8B59F820B68826009435AD /* ItemCategoryViewController.xib in Resources */,
 				3E9EEE69207F9387007F61B5 /* LaunchScreen.storyboard in Resources */,
 				3E9EEE74207F93B1007F61B5 /* MainViewController.xib in Resources */,
 				3E9EEE66207F9387007F61B5 /* Assets.xcassets in Resources */,
@@ -328,16 +326,18 @@
 			files = (
 				3E9EEE5F207F9386007F61B5 /* AppDelegate.swift in Sources */,
 				3E3D5FB420887EAC000A9175 /* Brand.swift in Sources */,
+				3E8B59F020B681BC009435AD /* UserData.swift in Sources */,
 				3E9EEE73207F93B1007F61B5 /* MainViewController.swift in Sources */,
-				3E9EEE77207F9491007F61B5 /* CardSelectView.swift in Sources */,
 				3E3D5FAE20886A79000A9175 /* CardCell.swift in Sources */,
 				3E3D5F9F20885604000A9175 /* NSObject + reusableIdentifier.swift in Sources */,
 				3E3D5FA120886352000A9175 /* UIColor + themeColor.swift in Sources */,
+				3E8B59FA20B688D5009435AD /* Enums.swift in Sources */,
 				3E3D5FB620887EB3000A9175 /* Card.swift in Sources */,
 				3EC06E272090964600761EBF /* CategoryCell + Gesture.swift in Sources */,
 				3E3D5FAA20886A6D000A9175 /* BrandCell.swift in Sources */,
 				3E3D5FBA2088AB9B000A9175 /* MainViewController + Beacon.swift in Sources */,
 				3E3D5FB82088A68E000A9175 /* Beacon.swift in Sources */,
+				3E8B59F720B68826009435AD /* ItemCategoryViewController.swift in Sources */,
 				3E3D5FA620886A61000A9175 /* CategoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

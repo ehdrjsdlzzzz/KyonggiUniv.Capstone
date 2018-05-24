@@ -13,6 +13,8 @@ extension MainViewController: CLLocationManagerDelegate{
     func initializeLocationManager(){
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
+        
+        locationManager.startUpdatingLocation()
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
@@ -36,10 +38,10 @@ extension MainViewController: CLLocationManagerDelegate{
     
     func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
         if state == .inside {
-            print("Now inside of Region")                                // --------------- 5
+            print("IBM : Now inside of Region")                                // --------------- 5
             locationManager.startRangingBeacons(in: self.beaconRegion)
         }else if state == .outside {
-            print("Now outside of Region")                               // --------------- 8
+            print("IBM : Now outside of Region")                               // --------------- 8
             locationManager.stopRangingBeacons(in: self.beaconRegion)
         }else if state == .unknown {
             print("Now unknown of Region")
@@ -48,12 +50,12 @@ extension MainViewController: CLLocationManagerDelegate{
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         localNotification(text: "You are now in COEX")
-        print("didEnter at \(region.identifier)")                   // --------------- 4
+        print("IBM : didEnter at COEX")                   // --------------- 4
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         localNotification(text: "Bye Bye")
-        print("didExit at \(region.identifier)")                    // --------------- 7
+        print("IBM : didExit at COEX")                    // --------------- 7
     }
     
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
@@ -72,11 +74,11 @@ extension MainViewController: CLLocationManagerDelegate{
     
     func displayStoreInformation(minor: NSNumber) {
         if minor == 10889 {
-            print("Nike")
+            print("IBM : Nike")
         }else if minor == 10884 {
-            print("Adidas")
+            print("IBM : Adidas")
         }else if minor == 10882{
-            print("New balance")
+            print("IBM : New balance")
         }
     }
 }

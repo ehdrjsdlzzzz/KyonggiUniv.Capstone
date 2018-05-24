@@ -36,34 +36,25 @@ class MainViewController: UIViewController {
         return label
     }()
     //MARK: Properties
-    var brands:[Brand] = [
-        Brand(image: #imageLiteral(resourceName: "starbucks"), name: "Starbucks"),
-        Brand(image: #imageLiteral(resourceName: "lush"), name: "LUSH"),
-        Brand(image: #imageLiteral(resourceName: "tomntoms"), name: "Tom N Toms"),
-        Brand(image: #imageLiteral(resourceName: "nike"), name: "Nike"),
-        Brand(image: #imageLiteral(resourceName: "newbalance"), name: "New Balance")
-        ]
-    var cards:[Card] = [
-        Card(category: "debit", name: "S20", company: "신한카드"),
-        Card(category: "debit", name: "네이버페이 체크카드", company: "신한카드"),
-        Card(category: "credit", name: "현대카드Zero", company: "현대카드"),
-        Card(category: "credit", name: "삼성카드4", company: "삼성카드"),
-        Card(category: "credit", name: "신한 Deep Dream", company: "신한카드"),
-        Card(category: "credit", name: "청춘대로 톡톡카드", company: "KB국민")
-    ]
-    let cardSelectView = CardSelectView.initFromNib()
-    var cardSelectViewBottomConstraint:NSLayoutConstraint?
-    var isMaximize:Bool = false
     var locationManager:CLLocationManager = CLLocationManager()
     var beaconRegion:CLBeaconRegion!
+    let center = UNUserNotificationCenter.current()
     //MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         self.beaconRegion = CLBeaconRegion(proximityUUID: UUID(uuidString: beacons[0].uuid)!, identifier: beacons[0].identifier)
+        center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+            
+        }
         initializeLocationManager()
         UNUserNotificationCenter.current().delegate = self
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     //MARK: Setup Views
     fileprivate func setupViews(){
         setupNavigationBar()
@@ -85,7 +76,6 @@ class MainViewController: UIViewController {
         favoritesCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         favoritesCollectionView.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: 30).isActive = true
         favoritesCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100).isActive = true
-        setupCardSelectView()
     }
     fileprivate func setupFavoritesCollectionView(){
         favoritesCollectionView.delegate = self
@@ -99,53 +89,35 @@ class MainViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.barTintColor = UIColor.themeDarkBlue
         self.navigationController?.navigationBar.tintColor = UIColor.themeOpaqueGray
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "setting"), style: .plain, target: self, action: #selector(handleSetting))
+        self.navigationController?.navigationBar.barStyle = .blackOpaque
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "setting"), style: .plain, target: self, action: #selector(handleSetting))
     }
-    fileprivate func setupCardSelectView(){
-        self.view.addSubview(cardSelectView)
-        cardSelectView.translatesAutoresizingMaskIntoConstraints = false
-        cardSelectViewBottomConstraint = cardSelectView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 340)
-        cardSelectViewBottomConstraint?.isActive = true
-        cardSelectView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        cardSelectView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        cardSelectView.heightAnchor.constraint(equalToConstant: 400).isActive = true
-        cardSelectView.dismissButton.addTarget(self, action: #selector(minimizeCardSelectView), for: .touchUpInside)
+//    @objc func handleSetting(){
+//        
+//    }
+    
+    @objc func handleAddBrand(_ sender: UIButton) {
+        let itemCategoryVC = ItemCategoryViewController(category: .Brand)
+        present(UINavigationController(rootViewController: itemCategoryVC), animated: true, completion: nil)
     }
-    //MARK: Handle Card Select View Sizing
-    func maximizeCardSelectView() {
-        isMaximize = true
-        cardSelectViewBottomConstraint?.constant = 0
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.cardSelectView.selectView.alpha = 1
-            self.cardSelectView.cardMenuBtnView.alpha = 0
-            self.view.layoutIfNeeded()
-        }, completion: nil)
-    }
-    @objc func minimizeCardSelectView() {
-        isMaximize = false
-        cardSelectViewBottomConstraint?.constant = 340
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.cardSelectView.selectView.alpha = 0
-            self.cardSelectView.cardMenuBtnView.alpha = 1
-            self.view.layoutIfNeeded()
-        }, completion: nil)
-    }
-    @objc func handleSetting(){
-        
+    
+    @objc func handleAddCard(_ sender: UIButton) {
+        let itemCategoryVC = ItemCategoryViewController(category: .Card)
+        present(UINavigationController(rootViewController: itemCategoryVC), animated: true, completion: nil)
     }
 }
 //MARK:- UICollectionViewDelegate, UICollectionViewDataSource
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.reusableIdentifier, for: indexPath) as! CategoryCell
-        cell.backgroundColor = UIColor.themeDarkBlue
-        cell.categoryLabel.textColor = UIColor.themeLightSkin
         if indexPath.row == 0 {
-            cell.categoryLabel.text = "Brand"
-            cell.brands = self.brands
+            cell.categoryLabel.text = Category.Brand.rawValue
+            cell.category = .Brand
+            cell.addItemButton.addTarget(self, action: #selector(handleAddBrand), for: .touchUpInside)
         }else if indexPath.row == 1  {
-            cell.categoryLabel.text = "Cards"
-            cell.cards = self.cards
+            cell.categoryLabel.text = Category.Card.rawValue
+            cell.category = .Card
+            cell.addItemButton.addTarget(self, action: #selector(handleAddCard), for: .touchUpInside)
         }
         return cell
     }
@@ -171,10 +143,6 @@ extension MainViewController: UNUserNotificationCenterDelegate {
         content.body = NSString.localizedUserNotificationString(forKey: text, arguments: nil)
         content.sound = UNNotificationSound.default()
         let request = UNNotificationRequest(identifier: "IBM", content: content, trigger: nil)
-        let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
-            
-        }
         center.add(request, withCompletionHandler: nil)
     }
     

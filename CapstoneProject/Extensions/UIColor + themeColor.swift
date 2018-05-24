@@ -9,15 +9,6 @@
 import UIKit
 
 extension UIColor {
-    static var themeDark: UIColor {
-        return UIColor(hex: 0x454445)
-    }
-    static var themeLightGreen: UIColor {
-        return UIColor(hex: 0x009494)
-    }
-    static var themeGreen: UIColor {
-        return UIColor(hex: 0x00585E)
-    }
     // Second Theme
     static var themeDarkBlue: UIColor {
         return UIColor(hex: 0x012E40)
