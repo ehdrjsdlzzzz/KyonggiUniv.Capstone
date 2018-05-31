@@ -20,20 +20,22 @@ extension CategoryCell {
         
         let alert:UIAlertController!
         switch category {
-        case .Card:
-            let item = UserData.default.cards[indexPath.row]
-            alert = UIAlertController(title: nil, message: "Remove \(item.name)?", preferredStyle: .actionSheet)
+        case .card:
+            let item = UserDefaults.standard.loadCards()[indexPath.row]
+            alert = UIAlertController(title: nil, message: "Remove \(item.card_name)?", preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { (_) in
-                UserData.default.cards.remove(at: indexPath.row)
+                UserDefaults.standard.set(try? PropertyListEncoder().encode(UserDefaults.standard.loadCards().filter({$0.card_name != item.card_name})), forKey: Card.key)
+                self.cards.remove(at: indexPath.row)
                 self.itemsCollectionView.deleteItems(at: [indexPath])
             }))
             alert.addAction(UIAlertAction(title: "Cencel", style: .cancel, handler: nil))
             keyWindow.rootViewController?.present(alert, animated: true, completion: nil)
-        case .Brand:
-            let item = UserData.default.brands[indexPath.row]
-            alert = UIAlertController(title: nil, message: "Remove \(item.name)?", preferredStyle: .actionSheet)
+        case .brand:
+            let item = UserDefaults.standard.loadBrands()[indexPath.row]
+            alert = UIAlertController(title: nil, message: "Remove \(item.store_name)?", preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { (_) in
-                UserData.default.brands.remove(at: indexPath.row)
+                UserDefaults.standard.set(try? PropertyListEncoder().encode(UserDefaults.standard.loadBrands().filter({$0.store_name != item.store_name})), forKey: Brand.key)
+                self.brands.remove(at: indexPath.row)
                 self.itemsCollectionView.deleteItems(at: [indexPath])
             }))
             alert.addAction(UIAlertAction(title: "Cencel", style: .cancel, handler: nil))

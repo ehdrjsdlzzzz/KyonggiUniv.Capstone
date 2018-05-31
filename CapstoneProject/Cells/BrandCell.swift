@@ -18,8 +18,8 @@ class BrandCell: UICollectionViewCell {
     @IBOutlet weak var brandLogoImage: UIImageView!
     var brand: Brand? {
         didSet{
-            brandLogoImage.image = brand?.image
-            brandNameLabel.text = brand?.name
+            brandLogoImage.image = UIImage(named: (brand?.store_name.lowercased().replacingOccurrences(of: " ", with: "")) ?? "")
+            brandNameLabel.text = brand?.store_name
         }
     }
     override func awakeFromNib() {

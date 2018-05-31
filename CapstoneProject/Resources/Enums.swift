@@ -9,6 +9,6 @@
 import Foundation
 
 enum Category: String {
-    case Brand
-    case Card
+    case brand
+    case card
 }

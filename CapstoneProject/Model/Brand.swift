@@ -8,7 +8,11 @@
 
 import UIKit
 
-struct Brand {
-    var image: UIImage
-    var name:String    
+struct Brand: Codable {
+    static let key = "Seleceted.Brands"
+    var store_name:String
+    var store_beacon_uuid:String
+    var store_beacon_minor:Int
+    var store_beacon_major:Int
+    var store_img: String?
 }

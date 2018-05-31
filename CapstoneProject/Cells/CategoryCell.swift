@@ -22,11 +22,20 @@ class CategoryCell: UICollectionViewCell {
     }
     @IBOutlet weak var addItemButton: UIButton!
     //MARK: Properties
-    var category:Category = .Card {
+    var category:Category = .card {
         didSet{
+            switch category {
+            case .card:
+                self.cards = UserDefaults.standard.loadCards()
+            case .brand:
+                self.brands = UserDefaults.standard.loadBrands()
+            }
             self.itemsCollectionView.reloadData()
         }
     }
+    
+    var cards:[Card] = []
+    var brands:[Brand] = []
     //MARK: Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -51,23 +60,21 @@ class CategoryCell: UICollectionViewCell {
 extension CategoryCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch category {
-        case .Card:
-            return UserData.default.cards.count
-        case .Brand:
-            return UserData.default.brands.count
+        case .card:
+            return cards.count
+        case .brand:
+            return brands.count
         }
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch category {
-        case .Brand:
+        case .brand:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BrandCell.reusableIdentifier, for: indexPath) as! BrandCell
-            cell.brand = UserData.default.brands[indexPath.row]
+            cell.brand = brands[indexPath.row]
             return cell
-        case .Card:
+        case .card:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCell.reusableIdentifier, for: indexPath) as! CardCell
-            cell.card = UserData.default.cards[indexPath.row]
-            cell.layer.cornerRadius = 15
-            cell.layer.masksToBounds = true
+            cell.card = cards[indexPath.row]
             return cell
         }
     }
@@ -77,18 +84,18 @@ extension CategoryCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         switch category {
-        case .Card:
+        case .card:
             return CGSize(width: 258, height: 162)
-        case .Brand:
+        case .brand:
             return CGSize(width: 180, height: 250)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         switch category {
-        case .Card:
-            return UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
-        case .Brand:
+        case .card:
+            return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        case .brand:
             return UIEdgeInsetsMake(0, 0, 0, 0)
         }
     }

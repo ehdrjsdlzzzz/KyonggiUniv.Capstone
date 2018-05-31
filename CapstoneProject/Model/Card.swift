@@ -8,8 +8,9 @@
 
 import Foundation
 
-struct Card {
-    var category:String
-    var name:String
-    var company:String
+struct Card: Codable{
+    static let key = "Seleceted.Cards"
+    var card_type: String
+    var card_company: String
+    var card_name: String
 }

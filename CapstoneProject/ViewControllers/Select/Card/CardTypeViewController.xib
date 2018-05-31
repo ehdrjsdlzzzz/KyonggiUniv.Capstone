@@ -10,9 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ItemCategoryViewController" customModule="CapstoneProject" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardTypeViewController" customModule="CapstoneProject" customModuleProvider="target">
             <connections>
-                <outlet property="tableView" destination="yJ6-mI-9NX" id="BK9-XP-rRE"/>
+                <outlet property="tableView" destination="nZC-9g-ADU" id="8zi-lY-6oW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,17 +21,21 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="yJ6-mI-9NX">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="nZC-9g-ADU">
                     <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="PaS-Mj-dqb"/>
+                        <outlet property="delegate" destination="-1" id="OLn-b0-m5K"/>
+                    </connections>
                 </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="yJ6-mI-9NX" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Dlp-3G-6us"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yJ6-mI-9NX" secondAttribute="trailing" id="KDs-9g-vpz"/>
-                <constraint firstItem="yJ6-mI-9NX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="XKc-Ze-htQ"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="yJ6-mI-9NX" secondAttribute="bottom" id="tDT-27-L2L"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="nZC-9g-ADU" secondAttribute="bottom" id="9jK-yL-ify"/>
+                <constraint firstItem="nZC-9g-ADU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ebb-H4-tKj"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="nZC-9g-ADU" secondAttribute="trailing" id="fiy-g8-k4W"/>
+                <constraint firstItem="nZC-9g-ADU" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="vfK-sU-u8m"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>

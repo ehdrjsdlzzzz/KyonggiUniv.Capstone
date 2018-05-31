@@ -55,6 +55,11 @@ class MainViewController: UIViewController {
         return .lightContent
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        favoritesCollectionView.reloadData()
+    }
+    
     //MARK: Setup Views
     fileprivate func setupViews(){
         setupNavigationBar()
@@ -75,7 +80,7 @@ class MainViewController: UIViewController {
         favoritesCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         favoritesCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         favoritesCollectionView.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: 30).isActive = true
-        favoritesCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100).isActive = true
+        favoritesCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -60).isActive = true
     }
     fileprivate func setupFavoritesCollectionView(){
         favoritesCollectionView.delegate = self
@@ -90,20 +95,16 @@ class MainViewController: UIViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor.themeDarkBlue
         self.navigationController?.navigationBar.tintColor = UIColor.themeOpaqueGray
         self.navigationController?.navigationBar.barStyle = .blackOpaque
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "setting"), style: .plain, target: self, action: #selector(handleSetting))
     }
-//    @objc func handleSetting(){
-//        
-//    }
     
     @objc func handleAddBrand(_ sender: UIButton) {
-        let itemCategoryVC = ItemCategoryViewController(category: .Brand)
-        present(UINavigationController(rootViewController: itemCategoryVC), animated: true, completion: nil)
+        let brandSelectVC = BrandSelectViewController()
+        present(UINavigationController(rootViewController: brandSelectVC), animated: true, completion: nil)
     }
     
     @objc func handleAddCard(_ sender: UIButton) {
-        let itemCategoryVC = ItemCategoryViewController(category: .Card)
-        present(UINavigationController(rootViewController: itemCategoryVC), animated: true, completion: nil)
+        let cardSelectVC = CardTypeViewController()
+        present(UINavigationController(rootViewController: cardSelectVC), animated: true, completion: nil)
     }
 }
 //MARK:- UICollectionViewDelegate, UICollectionViewDataSource
@@ -111,12 +112,12 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.reusableIdentifier, for: indexPath) as! CategoryCell
         if indexPath.row == 0 {
-            cell.categoryLabel.text = Category.Brand.rawValue
-            cell.category = .Brand
+            cell.categoryLabel.text = Category.brand.rawValue
+            cell.category = .brand
             cell.addItemButton.addTarget(self, action: #selector(handleAddBrand), for: .touchUpInside)
         }else if indexPath.row == 1  {
-            cell.categoryLabel.text = Category.Card.rawValue
-            cell.category = .Card
+            cell.categoryLabel.text = Category.card.rawValue
+            cell.category = .card
             cell.addItemButton.addTarget(self, action: #selector(handleAddCard), for: .touchUpInside)
         }
         return cell

@@ -28,11 +28,11 @@ class CardCell: UICollectionViewCell {
     
     var card:Card? {
         didSet {
-            self.cardNameLabel.text = card?.name
-            self.cardCategoryLabel.text = card?.category
-            self.cardCompanyLabel.text = card?.company
+            self.cardNameLabel.text = card?.card_name
+            self.cardCategoryLabel.text = card?.card_type
+            self.cardCompanyLabel.text = card?.card_company
             
-            if card?.category == "credit" {
+            if card?.card_type == "신용카드" {
                 self.backgroundColor = UIColor.themeDeepBlueGreen
             }else{
                 self.backgroundColor = UIColor.themeLightBlueGreen
@@ -41,5 +41,6 @@ class CardCell: UICollectionViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.layer.cornerRadius = 15
     }
 }
