@@ -35,7 +35,7 @@ class BrandSelectViewController: UIViewController {
     
     fileprivate func setupNavigationBar(){
         self.navigationController?.setupSelectViewController()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "home"), style: .plain, target: self, action: #selector(handleDismiss(_:)))
+        self.navigationItem.rightBarButtonItem = dismissButton
     }
     
     @objc func handleDismiss(_ sender: Any) {

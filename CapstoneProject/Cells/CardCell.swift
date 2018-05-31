@@ -34,8 +34,10 @@ class CardCell: UICollectionViewCell {
             
             if card?.card_type == "신용카드" {
                 self.backgroundColor = UIColor.themeDeepBlueGreen
-            }else{
+            }else if card?.card_type == "체크카드"{
                 self.backgroundColor = UIColor.themeLightBlueGreen
+            }else{
+                self.backgroundColor = UIColor.themeOpaqueBlueGreen
             }
         }
     }

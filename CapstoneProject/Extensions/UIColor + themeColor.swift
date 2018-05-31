@@ -19,6 +19,9 @@ extension UIColor {
     static var themeLightBlueGreen: UIColor {
         return UIColor(hex: 0x618c88)
     }
+    static var themeOpaqueBlueGreen: UIColor {
+        return UIColor(hex: 0x455d5f)
+    }
     static var themeOpaqueGray: UIColor {
         return UIColor(hex: 0xbfb8aa)
     }
