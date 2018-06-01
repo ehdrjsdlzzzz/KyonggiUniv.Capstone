@@ -105,4 +105,24 @@ class APIService {
             }
         }
     }
+    
+    func didClosed(at store: String){
+        let parameter:[String:Any] = [
+            "store_name" : store,
+            "user": [
+                "sex": "M",
+                "age" : 25
+            ]
+        ]
+        
+        Alamofire.request("\(BASE_URL)/store/connected", method: .post, parameters: parameter, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+            let result = response.result
+            switch result {
+            case .success:
+                print("Success")
+            case .failure:
+                print("Fails")
+            }
+        }
+    }
 }

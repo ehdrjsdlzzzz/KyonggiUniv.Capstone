@@ -75,6 +75,10 @@ extension MainViewController: CLLocationManagerDelegate{
                             self.localNotification(text: $0, identifier: $0)
                         })
                     })
+                    
+                    if nearestBeacon.proximity == .near {
+                        APIService.shared.didClosed(at: store_name)
+                    }
                 }
             })
         }
