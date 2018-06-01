@@ -17,7 +17,6 @@ extension CategoryCell {
         guard let keyWindow = UIApplication.shared.keyWindow else {return}
         let location = gesture.location(in: self.itemsCollectionView)
         guard let indexPath = itemsCollectionView.indexPathForItem(at: location) else {return}
-        
         let alert:UIAlertController!
         switch category {
         case .card:

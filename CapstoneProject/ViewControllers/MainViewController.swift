@@ -39,6 +39,8 @@ class MainViewController: UIViewController {
     var locationManager:CLLocationManager = CLLocationManager()
     var beaconRegion:CLBeaconRegion!
     let center = UNUserNotificationCenter.current()
+    var promotionInfo:[String] = []
+    var currentBeaconMinor:Int = 0
     //MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -138,12 +140,12 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension MainViewController: UNUserNotificationCenterDelegate {
-    func localNotification(text: String){
+    func localNotification(text: String, identifier: String){
         let content = UNMutableNotificationContent()
         content.title = NSString.localizedUserNotificationString(forKey: "IBM", arguments: nil)
         content.body = NSString.localizedUserNotificationString(forKey: text, arguments: nil)
         content.sound = UNNotificationSound.default()
-        let request = UNNotificationRequest(identifier: "IBM", content: content, trigger: nil)
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
         center.add(request, withCompletionHandler: nil)
     }
     

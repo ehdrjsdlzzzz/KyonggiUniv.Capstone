@@ -12,3 +12,12 @@ enum Category: String {
     case brand
     case card
 }
+
+struct CardSelectData {
+    var card_type:String?
+    var card_company:String?
+    static var main = CardSelectData()
+    private init(){}
+    
+}
+

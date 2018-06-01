@@ -18,6 +18,7 @@
 		3E358E6C20BFFD230001B006 /* CardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E358E6A20BFFD230001B006 /* CardListViewController.swift */; };
 		3E358E6D20BFFD230001B006 /* CardListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E358E6B20BFFD230001B006 /* CardListViewController.xib */; };
 		3E358E6F20C00E530001B006 /* UserDefaults + data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E358E6E20C00E530001B006 /* UserDefaults + data.swift */; };
+		3E358E7320C1015D0001B006 /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E358E7220C1015D0001B006 /* Promotion.swift */; };
 		3E3D5F9B208855A2000A9175 /* SDSwagger.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3E3D5F9A208855A2000A9175 /* SDSwagger.otf */; };
 		3E3D5F9F20885604000A9175 /* NSObject + reusableIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D5F9E20885604000A9175 /* NSObject + reusableIdentifier.swift */; };
 		3E3D5FA120886352000A9175 /* UIColor + themeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D5FA020886352000A9175 /* UIColor + themeColor.swift */; };
@@ -32,7 +33,6 @@
 		3E3D5FB82088A68E000A9175 /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D5FB72088A68E000A9175 /* Beacon.swift */; };
 		3E3D5FBA2088AB9B000A9175 /* MainViewController + Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D5FB92088AB9B000A9175 /* MainViewController + Beacon.swift */; };
 		3E6D997620BFC774001047C5 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6D997520BFC774001047C5 /* APIService.swift */; };
-		3E8B59F020B681BC009435AD /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8B59EF20B681BC009435AD /* UserData.swift */; };
 		3E8B59FA20B688D5009435AD /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8B59F920B688D5009435AD /* Enums.swift */; };
 		3E9EEE5F207F9386007F61B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9EEE5E207F9386007F61B5 /* AppDelegate.swift */; };
 		3E9EEE66207F9387007F61B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E9EEE65207F9387007F61B5 /* Assets.xcassets */; };
@@ -54,6 +54,7 @@
 		3E358E6A20BFFD230001B006 /* CardListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewController.swift; sourceTree = "<group>"; };
 		3E358E6B20BFFD230001B006 /* CardListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardListViewController.xib; sourceTree = "<group>"; };
 		3E358E6E20C00E530001B006 /* UserDefaults + data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults + data.swift"; sourceTree = "<group>"; };
+		3E358E7220C1015D0001B006 /* Promotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promotion.swift; sourceTree = "<group>"; };
 		3E3D5F9A208855A2000A9175 /* SDSwagger.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SDSwagger.otf; sourceTree = "<group>"; };
 		3E3D5F9E20885604000A9175 /* NSObject + reusableIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject + reusableIdentifier.swift"; sourceTree = "<group>"; };
 		3E3D5FA020886352000A9175 /* UIColor + themeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + themeColor.swift"; sourceTree = "<group>"; };
@@ -68,7 +69,6 @@
 		3E3D5FB72088A68E000A9175 /* Beacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
 		3E3D5FB92088AB9B000A9175 /* MainViewController + Beacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController + Beacon.swift"; sourceTree = "<group>"; };
 		3E6D997520BFC774001047C5 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
-		3E8B59EF20B681BC009435AD /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		3E8B59F920B688D5009435AD /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		3E9EEE5B207F9386007F61B5 /* CapstoneProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapstoneProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E9EEE5E207F9386007F61B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -173,7 +173,7 @@
 			children = (
 				3E3D5FB320887EAC000A9175 /* Brand.swift */,
 				3E3D5FB520887EB3000A9175 /* Card.swift */,
-				3E8B59EF20B681BC009435AD /* UserData.swift */,
+				3E358E7220C1015D0001B006 /* Promotion.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -388,13 +388,13 @@
 			files = (
 				3E9EEE5F207F9386007F61B5 /* AppDelegate.swift in Sources */,
 				3E3D5FB420887EAC000A9175 /* Brand.swift in Sources */,
-				3E8B59F020B681BC009435AD /* UserData.swift in Sources */,
 				3E9EEE73207F93B1007F61B5 /* MainViewController.swift in Sources */,
 				3E358E6C20BFFD230001B006 /* CardListViewController.swift in Sources */,
 				3E3D5FAE20886A79000A9175 /* CardCell.swift in Sources */,
 				3E3D5F9F20885604000A9175 /* NSObject + reusableIdentifier.swift in Sources */,
 				3E358E5A20BFEB460001B006 /* CardTypeViewController.swift in Sources */,
 				3E6D997620BFC774001047C5 /* APIService.swift in Sources */,
+				3E358E7320C1015D0001B006 /* Promotion.swift in Sources */,
 				3E358E6120BFEF310001B006 /* UINavigation + Appearance.swift in Sources */,
 				3E3D5FA120886352000A9175 /* UIColor + themeColor.swift in Sources */,
 				3E8B59FA20B688D5009435AD /* Enums.swift in Sources */,

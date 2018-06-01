@@ -11,10 +11,11 @@ import Alamofire
 
 class APIService {
     static let shared = APIService()
+    private let BASE_URL = "https://warm-plains-89822.herokuapp.com"
     private init(){}
     
     func requestStore(completion: @escaping ([Brand])->()){
-        Alamofire.request("https://warm-plains-89822.herokuapp.com/store/all", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+        Alamofire.request("\(BASE_URL)/store/all", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
             let result = response.result
             switch result {
             case .success:
@@ -29,7 +30,7 @@ class APIService {
     }
     
     func requestCardType(completion: @escaping ([String])->()){
-        Alamofire.request("https://warm-plains-89822.herokuapp.com/card/type", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+        Alamofire.request("\(BASE_URL)/card/type", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
             let result = response.result
             switch result {
             case .success:
@@ -47,7 +48,7 @@ class APIService {
         let parameters = [
             "card_type": type
         ]
-        Alamofire.request("https://warm-plains-89822.herokuapp.com/card/company", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+        Alamofire.request("\(BASE_URL)/card/company", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
             let result = response.result
             switch result {
             case .success:
@@ -67,7 +68,7 @@ class APIService {
             "card_company": company
         ]
         
-        Alamofire.request("https://warm-plains-89822.herokuapp.com/card/name", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+        Alamofire.request("\(BASE_URL)/card/name", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
             let result = response.result
             switch result {
             case .success:
@@ -76,6 +77,30 @@ class APIService {
                 result.forEach({cards.append($0["card_name"]!)})
                 completion(cards)
             case .failure:
+                print("Fails")
+            }
+        }
+    }
+    
+    func didConnected(store: String, cards: [Card], completion: @escaping ([Promotion])->()){
+        var companies:[String] = []
+        cards.forEach({companies.append($0.card_company)})
+        companies = Array(Set(companies))
+        let parameters:[String: Any] = [
+            "store_name": store,
+            "cards": companies
+        ]
+        Alamofire.request("\(BASE_URL)/store/beacon/connected", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+            let result = response.result
+            switch result {
+            case .success:
+                guard let result = result.value as? [[[String:Any]]] else {return}
+                guard let jsonData = try? JSONSerialization.data(withJSONObject: result[1], options: []) else {return}
+                do {
+                    guard let promotions = try? JSONDecoder().decode([Promotion].self, from: jsonData) else {print("Fail to decode");return}
+                    completion(promotions)
+                }
+             case .failure:
                 print("Fails")
             }
         }
