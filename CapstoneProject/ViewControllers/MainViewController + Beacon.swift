@@ -38,11 +38,9 @@ extension MainViewController: CLLocationManagerDelegate{
     
     func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
         if state == .inside {
-            print("IBM : Now inside of Region")                                // --------------- 5
-            locationManager.startRangingBeacons(in: self.beaconRegion)
+            locationManager.startRangingBeacons(in: self.beaconRegion) // --------------- 5
         }else if state == .outside {
-            print("IBM : Now outside of Region")                               // --------------- 8
-            locationManager.stopRangingBeacons(in: self.beaconRegion)
+            locationManager.stopRangingBeacons(in: self.beaconRegion) // --------------- 8
         }else if state == .unknown {
             print("Now unknown of Region")
         }
@@ -65,7 +63,6 @@ extension MainViewController: CLLocationManagerDelegate{
                 if $0.store_beacon_minor == nearestBeacon.minor.intValue && currentBeaconMinor != nearestBeacon.minor.intValue{
                     currentBeaconMinor = nearestBeacon.minor.intValue
                     let store_name = $0.store_name
-                    print(store_name)
                     self.promotionInfo = []
                     APIService.shared.didConnected(store: $0.store_name, cards: UserDefaults.standard.loadCards(), completion: { (promotions) in
                         promotions.forEach({
@@ -81,16 +78,6 @@ extension MainViewController: CLLocationManagerDelegate{
                     }
                 }
             })
-        }
-    }
-    
-    func displayStoreInformation(minor: NSNumber) {
-        if minor == 10889 {
-            print("IBM : Nike")
-        }else if minor == 10884 {
-            print("IBM : Starbucks")
-        }else if minor == 10882{
-            print("IBM : New balance")
         }
     }
 }

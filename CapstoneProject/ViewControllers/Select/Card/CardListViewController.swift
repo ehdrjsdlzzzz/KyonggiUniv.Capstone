@@ -38,7 +38,6 @@ class CardListViewController: UIViewController {
     }
     
     @objc func handleDismiss(_ sender: UIBarButtonItem){
-        print("dimsiss")
         dismiss(animated: true, completion: nil)
     }
     
@@ -51,8 +50,6 @@ class CardListViewController: UIViewController {
         selectedCards.forEach { (name) in
             if !cards.contains(where: {$0.card_name == name}) {
                 cards.append(Card(card_type: CardSelectData.main.card_type!, card_company: CardSelectData.main.card_company!, card_name: name))
-            }else{
-                print("Already registered card")
             }
         }
         UserDefaults.standard.set(try? PropertyListEncoder().encode(cards), forKey: Card.key)
