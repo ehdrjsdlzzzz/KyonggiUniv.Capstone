@@ -21,6 +21,7 @@ class CardListViewController: UIViewController {
         company = CardSelectData.main.card_company
         tableView.backgroundColor = UIColor.themeLightSkin
         tableView.allowsMultipleSelection = true
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: Card.identifier)
         self.navigationController?.setupSelectViewController()
         self.navigationItem.rightBarButtonItem = dismissButton
         
@@ -61,7 +62,7 @@ extension CardListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: Card.identifier, for: indexPath)
         cell.backgroundColor = UIColor.themeLightSkin
         cell.accessoryView = UIImageView(image: #imageLiteral(resourceName: "uncheck"))
         cell.textLabel?.text = nameList[indexPath.row]

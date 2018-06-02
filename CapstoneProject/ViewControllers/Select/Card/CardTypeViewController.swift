@@ -16,6 +16,7 @@ class CardTypeViewController: UIViewController {
         super.viewDidLoad()
         setupNavigationBar()
         tableView.backgroundColor = UIColor.themeLightSkin
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: Card.identifier)
         self.title = "카드 유형"
         APIService.shared.requestCardType { (types) in
             self.types = types
@@ -41,7 +42,7 @@ extension CardTypeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: Card.identifier, for: indexPath)
         cell.backgroundColor = UIColor.themeLightSkin
         cell.accessoryView = UIImageView(image: #imageLiteral(resourceName: "right_arrow"))
         cell.textLabel?.text = types[indexPath.row]

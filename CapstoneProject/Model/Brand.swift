@@ -10,6 +10,7 @@ import UIKit
 
 struct Brand: Codable {
     static let key = "Seleceted.Brands"
+    static let identifier = "Cell.Brand"
     var store_name:String
     var store_beacon_uuid:String
     var store_beacon_minor:Int

@@ -21,6 +21,7 @@ class BrandSelectViewController: UIViewController {
         setupNavigationBar()
         tableView.backgroundColor = UIColor.themeLightSkin
         tableView.allowsMultipleSelection = true
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: Brand.identifier)
         title = "브랜드 선택"
         
         APIService.shared.requestStore { (brands) in
@@ -58,7 +59,7 @@ extension BrandSelectViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: Brand.identifier, for: indexPath)
         cell.backgroundColor = UIColor.themeLightSkin
         cell.textLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         cell.accessoryView = UIImageView(image: #imageLiteral(resourceName: "uncheck"))

@@ -10,6 +10,7 @@ import Foundation
 
 struct Card: Codable{
     static let key = "Seleceted.Cards"
+    static let identifier = "Cell.Card"
     var card_type: String
     var card_company: String
     var card_name: String

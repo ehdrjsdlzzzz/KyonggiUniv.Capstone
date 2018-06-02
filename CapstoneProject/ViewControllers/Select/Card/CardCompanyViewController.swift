@@ -16,6 +16,7 @@ class CardCompanyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.backgroundColor = UIColor.themeLightSkin
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: Card.identifier)
         self.navigationController?.setupSelectViewController()
         type = CardSelectData.main.card_type
         title = type
@@ -36,7 +37,7 @@ extension CardCompanyViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: Card.identifier, for: indexPath)
         cell.backgroundColor = UIColor.themeLightSkin
         cell.accessoryView = UIImageView(image: #imageLiteral(resourceName: "right_arrow"))
         cell.textLabel?.text = companies[indexPath.row]
