@@ -47,7 +47,12 @@ class BrandSelectViewController: UIViewController {
         
         guard let indexPaths = tableView.indexPathsForSelectedRows else {return}
         var selectedBrands:[Brand] = UserDefaults.standard.loadBrands()
-        indexPaths.forEach({selectedBrands.append(brands[$0.row])})
+        indexPaths.forEach { (indexPath) in
+            let index = indexPath
+            if !selectedBrands.contains(where: {$0.store_name == brands[index.row].store_name}) {
+                selectedBrands.append(brands[index.row])
+            }
+        }
         UserDefaults.standard.set(try? PropertyListEncoder().encode(selectedBrands), forKey: Brand.key)
         dismiss(animated: true, completion: nil)
     }

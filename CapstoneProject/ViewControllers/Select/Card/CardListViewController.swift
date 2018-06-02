@@ -47,10 +47,14 @@ class CardListViewController: UIViewController {
         var selectedCards:[String] = []
         indexPaths.forEach({selectedCards.append(nameList[$0.row])})
         var cards:[Card] = UserDefaults.standard.loadCards()
-        selectedCards.forEach({
-            cards.append(Card(card_type: CardSelectData.main.card_type!, card_company: CardSelectData.main.card_company!, card_name: $0))
-        })
         
+        selectedCards.forEach { (name) in
+            if !cards.contains(where: {$0.card_name == name}) {
+                cards.append(Card(card_type: CardSelectData.main.card_type!, card_company: CardSelectData.main.card_company!, card_name: name))
+            }else{
+                print("Already registered card")
+            }
+        }
         UserDefaults.standard.set(try? PropertyListEncoder().encode(cards), forKey: Card.key)
         dismiss(animated: true, completion: nil)
     }
