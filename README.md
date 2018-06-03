@@ -60,3 +60,7 @@ iOS Core Location 프레임워크를 활용하여 비콘의 영역을 등록하�
     -  `beacons.first `를 통해 가장 가까운 비콘에 대한 행위를 정의해줄 수 있다.
     -  `nearestBeacon.proximity ` 을 통해 비콘과의 근접도를 판단할 수 있다. `.immediate`, `.near` , `.far` 순으로 근접한 근접도를 판단함.
 
+**참고자료**
+
+- [Determining the proximity to an iBeacon](https://developer.apple.com/documentation/corelocation/determining_the_proximity_to_an_ibeacon)
+- [Region Monitoring and iBeacon](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/LocationAwarenessPG/RegionMonitoring/RegionMonitoring.html#//apple_ref/doc/uid/TP40009497-CH9-SW1)
