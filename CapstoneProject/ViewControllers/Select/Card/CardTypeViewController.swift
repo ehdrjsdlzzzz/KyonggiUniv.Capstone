@@ -9,9 +9,11 @@
 import UIKit
 
 class CardTypeViewController: UIViewController {
-
-    var types:[String] = []
+    //MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
+    //MARK: Properties
+    var types:[String] = []
+    //MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
@@ -23,19 +25,21 @@ class CardTypeViewController: UIViewController {
             self.tableView.reloadData()
         }
     }
+    //MARK: Preferences
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.default
     }
+    //MARK: Setup
     fileprivate func setupNavigationBar(){
         self.navigationController?.setupSelectViewController()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "home"), style: .plain, target: self, action: #selector(handleDismiss(_:)))
     }
-    
+    //MARK: Target-Action
     @objc func handleDismiss(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
 }
-
+//MARK:- TableView
 extension CardTypeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return types.count

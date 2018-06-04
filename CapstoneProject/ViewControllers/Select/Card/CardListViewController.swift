@@ -9,13 +9,14 @@
 import UIKit
 
 class CardListViewController: UIViewController {
-    
+    //MARK: Outlets
+    @IBOutlet weak var tableView: UITableView!
+    //MARK: Properties
     var nameList:[String] = []
     var company:String!
-    
     lazy var dismissButton = UIBarButtonItem(title: "닫기", style: .done, target: self, action: #selector(handleDismiss))
     lazy var doneButton = UIBarButtonItem(title: "완료", style: .done, target: self, action: #selector(handleDone))
-    @IBOutlet weak var tableView: UITableView!
+    //MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         company = CardSelectData.main.card_company
@@ -32,15 +33,14 @@ class CardListViewController: UIViewController {
             self.tableView.reloadData()
         }
     }
-    
+    //MARK: Preferences
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.default
     }
-    
+    //MARK: Target-Action
     @objc func handleDismiss(_ sender: UIBarButtonItem){
         dismiss(animated: true, completion: nil)
     }
-    
     @objc func handleDone(_ sender: UIBarButtonItem){
         guard let indexPaths = tableView.indexPathsForSelectedRows else {return}
         var selectedCards:[String] = []
@@ -56,7 +56,7 @@ class CardListViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 }
-
+//MARK:- TableView
 extension CardListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return nameList.count

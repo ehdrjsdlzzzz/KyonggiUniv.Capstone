@@ -33,7 +33,6 @@ class CategoryCell: UICollectionViewCell {
             self.itemsCollectionView.reloadData()
         }
     }
-    
     var cards:[Card] = []
     var brands:[Brand] = []
     //MARK: Life cycle

@@ -18,6 +18,5 @@ struct CardSelectData {
     var card_company:String?
     static var main = CardSelectData()
     private init(){}
-    
 }
 

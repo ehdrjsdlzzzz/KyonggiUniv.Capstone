@@ -9,13 +9,13 @@
 import UIKit
 
 class BrandSelectViewController: UIViewController {
-
+    //MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
-    
+    //MARK: Properteis
     var brands:[Brand] = []
     lazy var dismissButton = UIBarButtonItem(title: "닫기", style: .done, target: self, action: #selector(handleDismiss))
     lazy var doneButton = UIBarButtonItem(title: "완료", style: .done, target: self, action: #selector(handleDone))
-    
+    //MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
@@ -29,20 +29,19 @@ class BrandSelectViewController: UIViewController {
             self.tableView.reloadData()
         }
     }
-    
+    //MARK: Preferences
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.default
     }
-    
+    //MARK: Setup
     fileprivate func setupNavigationBar(){
         self.navigationController?.setupSelectViewController()
         self.navigationItem.rightBarButtonItem = dismissButton
     }
-    
+    //MARK: Target-Action
     @objc func handleDismiss(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
     @objc func handleDone(_ sender: UIBarButtonItem){
         
         guard let indexPaths = tableView.indexPathsForSelectedRows else {return}
@@ -57,7 +56,7 @@ class BrandSelectViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 }
-
+//MARK:- TableView
 extension BrandSelectViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return brands.count

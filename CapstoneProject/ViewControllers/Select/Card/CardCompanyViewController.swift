@@ -9,10 +9,12 @@
 import UIKit
 
 class CardCompanyViewController: UIViewController {
-
+    //MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
+    //MARK: Properties
     var companies:[String] = []
     var type:String!
+    //MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.backgroundColor = UIColor.themeLightSkin
@@ -25,12 +27,12 @@ class CardCompanyViewController: UIViewController {
             self.tableView.reloadData()
         }
     }
-    
+    //MARK: Preferences
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.default
     }
 }
-
+//MARK:- TableView
 extension CardCompanyViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return companies.count

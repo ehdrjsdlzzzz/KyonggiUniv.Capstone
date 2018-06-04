@@ -13,7 +13,7 @@ class APIService {
     static let shared = APIService()
     private let BASE_URL = "https://warm-plains-89822.herokuapp.com"
     private init(){}
-    
+    //MARK: Request all brands
     func requestStore(completion: @escaping ([Brand])->()){
         Alamofire.request("\(BASE_URL)/store/all", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
             let result = response.result
@@ -28,7 +28,7 @@ class APIService {
             }
         }
     }
-    
+    //MARK: Request card types
     func requestCardType(completion: @escaping ([String])->()){
         Alamofire.request("\(BASE_URL)/card/type", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
             let result = response.result
@@ -43,7 +43,7 @@ class APIService {
             }
         }
     }
-    
+    //MARK: Request card company
     func requestCardCompany(type: String, completion: @escaping ([String])->()){
         let parameters = [
             "card_type": type
@@ -61,7 +61,7 @@ class APIService {
             }
         }
     }
-    
+    //MARK: Request card list with types and company
     func requestCardList(type: String, company: String, completion: @escaping ([String])->()){
         let parameters = [
             "card_type": type,
@@ -81,7 +81,7 @@ class APIService {
             }
         }
     }
-    
+    //MARK: Called when detect registerd store
     func didConnected(store: String, cards: [Card], completion: @escaping ([Promotion])->()){
         var companies:[String] = []
         cards.forEach({companies.append($0.card_company)})
@@ -105,7 +105,7 @@ class APIService {
             }
         }
     }
-    
+    //MARK: 매장과 거리가 가까워졌을 떄
     func didClosed(at store: String){
         let parameter:[String:Any] = [
             "store_name" : store,

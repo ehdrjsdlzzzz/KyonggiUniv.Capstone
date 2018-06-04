@@ -73,7 +73,7 @@ extension MainViewController: CLLocationManagerDelegate{
                         })
                     })
                     
-                    if nearestBeacon.proximity == .near {
+                    if nearestBeacon.proximity == .immediate {
                         APIService.shared.didClosed(at: store_name)
                     }
                 }

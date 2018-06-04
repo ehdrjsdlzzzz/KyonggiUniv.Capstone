@@ -9,7 +9,7 @@
 import UIKit
 
 class CardCell: UICollectionViewCell {
-
+    //MARK: Outlets
     @IBOutlet weak var cardCategoryLabel: UILabel! {
         didSet{
             cardCategoryLabel.textColor = UIColor.themeLightSkin
@@ -25,7 +25,7 @@ class CardCell: UICollectionViewCell {
             cardCompanyLabel.textColor = UIColor.themeLightSkin
         }
     }
-    
+    //MARK: Properties
     var card:Card? {
         didSet {
             self.cardNameLabel.text = card?.card_name
@@ -41,6 +41,7 @@ class CardCell: UICollectionViewCell {
             }
         }
     }
+    //MARK: Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         self.layer.cornerRadius = 15
