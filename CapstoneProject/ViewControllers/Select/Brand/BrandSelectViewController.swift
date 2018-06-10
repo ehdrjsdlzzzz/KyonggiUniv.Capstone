@@ -23,8 +23,8 @@ class BrandSelectViewController: UIViewController {
         tableView.allowsMultipleSelection = true
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: Brand.identifier)
         title = "브랜드 선택"
-        
-        APIService.shared.requestStore { (brands) in
+
+        APIService.shared.request(url: URL(string: "https://warm-plains-89822.herokuapp.com/store/all")) { (brands: [Brand]) in
             self.brands = brands
             self.tableView.reloadData()
         }

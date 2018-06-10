@@ -14,6 +14,18 @@ class APIService {
     private let BASE_URL = "https://warm-plains-89822.herokuapp.com"
     private init(){}
     //MARK: Request all brands
+    func request<T: Decodable>(url: URL?, completion: @escaping (T)->()){
+        guard let url = url else {return}
+        Alamofire.request(url).responseJSON { (response) in
+            guard let data = response.data else {return}
+            
+            do {
+                guard let decodedData = try? JSONDecoder().decode(T.self, from: data) else {return}
+                completion(decodedData)
+            }
+        }
+    }
+    
     func requestStore(completion: @escaping ([Brand])->()){
         Alamofire.request("\(BASE_URL)/store/all", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
             let result = response.result
