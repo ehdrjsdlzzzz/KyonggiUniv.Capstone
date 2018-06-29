@@ -13,6 +13,7 @@ class CardTypeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     //MARK: Properties
     var types:[String] = []
+    var cards:[Card] = []
     //MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +21,8 @@ class CardTypeViewController: UIViewController {
         tableView.backgroundColor = UIColor.themeLightSkin
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: Card.identifier)
         self.title = "카드 유형"
-        APIService.shared.requestCardType { (types) in
-            self.types = types
+        APIService.shared.requestCardType { (cards) in
+            self.cards = cards
             self.tableView.reloadData()
         }
     }
@@ -42,21 +43,21 @@ class CardTypeViewController: UIViewController {
 //MARK:- TableView
 extension CardTypeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return types.count
+        return cards.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Card.identifier, for: indexPath)
         cell.backgroundColor = UIColor.themeLightSkin
         cell.accessoryView = UIImageView(image: #imageLiteral(resourceName: "right_arrow"))
-        cell.textLabel?.text = types[indexPath.row]
+        cell.textLabel?.text = cards[indexPath.row].card_name
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let companySelectVC = CardCompanyViewController()
-        CardSelectData.main.card_type = types[indexPath.row]
+        CardSelectData.main.card_type = cards[indexPath.row].card_type
         navigationController?.pushViewController(companySelectVC, animated: true)
     }
 }

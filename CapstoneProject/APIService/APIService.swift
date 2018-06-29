@@ -25,31 +25,22 @@ class APIService {
             }
         }
     }
-    
-    func requestStore(completion: @escaping ([Brand])->()){
-        Alamofire.request("\(BASE_URL)/store/all", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
-            let result = response.result
-            switch result {
-            case .success:
-                guard let result = result.value as? [[String:Any]] else {return}
-                guard let jsonData = try? JSONSerialization.data(withJSONObject: result, options: []) else {return}
-                guard let brands = try? JSONDecoder().decode([Brand].self, from: jsonData) else {return}
-                completion(brands)
-            case .failure:
-                print("Fails")
-            }
-        }
-    }
     //MARK: Request card types
-    func requestCardType(completion: @escaping ([String])->()){
+    func requestCardType(completion: @escaping ([Card])->()){
         Alamofire.request("\(BASE_URL)/card/type", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
             let result = response.result
             switch result {
             case .success:
-                guard let result = result.value as? [[String:String]] else {return}
-                var types:[String] = []
-                result.forEach({types.append($0["card_type"]!)})
-                completion(types)
+//                guard let result = result.value as? [[String:String]] else {return}
+//                var types:[String] = []
+//                result.forEach({types.append($0["card_type"]!)})
+//                completion(types)
+                guard let data = response.data else {return}
+                do {
+                    guard let decodedData = try? JSONDecoder().decode([Card].self, from: data) else {return}
+                    completion(decodedData)
+                }
+                
             case .failure:
                 print("Fails")
             }
